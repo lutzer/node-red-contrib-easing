@@ -1,0 +1,50 @@
+<script type="text/javascript">
+    RED.nodes.registerType('easing',{
+        category: 'function',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value: "" },
+            easingType: { value: "linear" },
+            duration: { value: 1000, validate: RED.validators.number() },
+            interval: { value: 50, validate: RED.validators.number() }, 
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name || "easing";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="easing">
+    <div class="form-row">
+        <label for="node-input-easingType">Easing Function</label>
+        <select id="node-input-easingType" style="width:270px !important">
+            <option value="none" disabled selected>Select easing function</option>
+            <option value="linear">linear</option>
+            <option value="easeInQuad">easeInQuad</option>
+            <option value="easeOutQuad">easeOutQuad</option>
+            <option value="easeInOutQuad">easeInOutQuad</option>
+        </select>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-duration">Duration</label>
+        <input type="number" id="node-input-duration" placeholder="Duration for function">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-interval">Interval</label>
+        <input type="number" id="node-input-interval" placeholder="Interval for emiting values">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="easing">
+    <p>A simple node that converts the message payloads into all lower-case characters</p>
+</script>

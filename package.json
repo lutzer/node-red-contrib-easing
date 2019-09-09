@@ -1,0 +1,23 @@
+{
+  "name": "red-node-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "***REMOVED***"
+  },
+  "author": "",
+  "license": "ISC",
+  "node-red": {
+    "nodes": {
+      "easing": "easing.js"
+    }
+  },
+  "dependencies": {
+    "lodash": "^4.17.15"
+  }
+}
