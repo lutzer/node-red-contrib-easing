@@ -7,12 +7,24 @@
             easingType: { value: "linear" },
             duration: { value: 1000, validate: RED.validators.number() },
             interval: { value: 50, validate: RED.validators.number() }, 
+            outputType: { value: "overTime" }
         },
         inputs:1,
         outputs:1,
         icon: "file.png",
         label: function() {
             return this.name || "easing";
+        },
+        oneditprepare: function () {
+
+            function switchOperatorType(operatorType) {
+                $(".detail-view").hide();
+                $(".detail-view#" + operatorType).show()
+            }
+
+            $('#node-input-outputType').on('change', function (val) {
+                switchOperatorType(this.value);
+            })
         }
     });
 </script>
@@ -30,13 +42,29 @@
     </div>
 
     <div class="form-row">
-        <label for="node-input-duration">Duration</label>
-        <input type="number" id="node-input-duration" placeholder="Duration for function">
+        <label for="node-input-outputType">Output</label>
+        <select id="node-input-outputType" style="width:270px !important">
+            <option value="overTime" selected>Values over time</option>
+            <option value="asArray">As Array</option>
+        </select>
     </div>
 
-    <div class="form-row">
-        <label for="node-input-interval">Interval</label>
-        <input type="number" id="node-input-interval" placeholder="Interval for emiting values">
+    <div class="detail-view" id="asArray">
+        <div class="form-row">
+            <label for="node-input-numberOfValues">Number</label>
+            <input type="number" id="node-input-duration" placeholder="Number of Values">
+        </div>
+    </div>
+
+    <div class="detail-view" id="overTime">
+        <div class="form-row">
+            <label for="node-input-duration">Duration</label>
+            <input type="number" id="node-input-duration" placeholder="Duration for function">
+        </div>
+        <div class="form-row">
+            <label for="node-input-interval">Interval</label>
+            <input type="number" id="node-input-interval" placeholder="Interval for emiting values">
+        </div>
     </div>
 
     <div class="form-row">
