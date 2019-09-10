@@ -62,37 +62,42 @@ module.exports = function(RED) {
             if (_.isNumber(msg.payload)) {
                 startValue = lastValue;
                 endValue = msg.payload;
+            // else check if payload has to and from values
+            } else if (_.isObject(msg.payload)) {
+                startValue = _.has(msg.payload,'from') ? msg.payload.from : lastValue;
+                endValue = _.has(msg.payload,'to') ? msg.payload.to : 1.0;
             } else {
-                startValue = _.has(msg.payload,'from') ? msg.payload : 0;
-                endValue = _.has(msg.payload,'to') ? msg.payload : 1;
+                startValue = 0.0;
+                endValue = 1.0
             }
+
+            let duration = _.has(msg.payload, 'duration') ? msg.payload.duration : config.duration;
             
             // clear previous interval
             stopInterval(interval);
 
             let elapsed = 0;
 
+            // send initial val
+            msg.payload = startValue;
+            node.send(msg);
+
             // start interval
             interval = setInterval( () => {
                 elapsed += config.interval;
 
-                let t = Math.min(1.0, elapsed / config.duration) 
+                let t = Math.min(1.0, elapsed / duration) 
                 let val = startValue + EasingFunctions[config.easingType](t) * (endValue - startValue);
+
+                lastValue = val;
 
                 msg.payload = val
                 node.send(msg);
 
-                lastValue = val;
-
-                // stop when reaching 1.0
                 if (t >= 1.0) {
                     stopInterval(interval);
                 }
             }, config.interval)
-
-            // send initial val
-            msg.payload = 0.0;
-            node.send(msg);
             
         });
 
