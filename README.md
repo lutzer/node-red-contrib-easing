@@ -1,18 +1,12 @@
-# Node Red node Boilerplate
+# Node Red Contrib Easing
 
-Minimal code for creating your own node red node.
-
-Author: Lutz Reiter
+A node that animates a value between a start and end value using an easing function
 
 ## Install
 
-* clone repository
-* run `npm install` in its directory.
-* go to node-red foder. in os x: `~/.node-red` run `npm link <dir to project>` to create link within node_modules folder to project.
-* restart node-red.
-* node should appear in the node list now.
+### In Node-red
+Via Manage Palette -> Search for *node-red-contrib-easing*
 
-
-## Links
-
-* https://nodered.org/docs/creating-nodes/first-node
+### In Terminal
+go in node-red install folder, in os x its usually: `~/.node-red`
+run `npm install node-red-contrib-easing`
