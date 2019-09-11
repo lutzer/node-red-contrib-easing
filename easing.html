@@ -20,12 +20,12 @@
 
             function switchOperatorType(operatorType) {
                 $(".detail-view").hide();
-                $(".detail-view#" + operatorType).show()
+                if (operatorType !== "")
+                    $(".detail-view#" + operatorType).show()
             }
 
             $('#node-input-outputType').on('change', function (val) {
-                if (this.value !== "")
-                    switchOperatorType(this.value);
+                switchOperatorType(this.value);
             })
 
             switchOperatorType("overTime");

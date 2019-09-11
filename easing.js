@@ -46,8 +46,14 @@ module.exports = function(RED) {
             return;
         }
 
+        if (config.numberOfValues <= 0) {
+            node.error("array size must be bigger than 0");
+            return;
+        }
+
         config.interval = _.toNumber(config.interval);
         config.duration = _.toNumber(config.duration);
+        config.numberOfValues = _.toNumber(config.numberOfValues);
 
         // holds interval
         var interval = null;
@@ -71,33 +77,45 @@ module.exports = function(RED) {
                 endValue = 1.0
             }
 
-            let duration = _.has(msg.payload, 'duration') ? msg.payload.duration : config.duration;
-            
-            // clear previous interval
-            stopInterval(interval);
+            if (config.outputType === "asArray") {
 
-            let elapsed = 0;
+                let size = _.has(msg.payload, 'size') ? msg.payload.size : config.numberOfValues;
 
-            // send initial val
-            msg.payload = startValue;
-            node.send(msg);
+                let values = _.map(_.range(0,1.0, 1.0/size), (t) => {
+                    return startValue + EasingFunctions[config.easingType](t) * (endValue - startValue);
+                });
+                values.push(endValue);
 
-            // start interval
-            interval = setInterval( () => {
-                elapsed += config.interval;
+                lastValue = endValue;
 
-                let t = Math.min(1.0, elapsed / duration) 
-                let val = startValue + EasingFunctions[config.easingType](t) * (endValue - startValue);
-
-                lastValue = val;
-
-                msg.payload = val
+                msg.payload = _.drop(values,1);
                 node.send(msg);
 
-                if (t >= 1.0) {
-                    stopInterval(interval);
-                }
-            }, config.interval)
+            } else if (config.outputType === "overTime") {
+
+                let duration = _.has(msg.payload, 'duration') ? msg.payload.duration : config.duration;
+                let elapsed = 0;
+
+                // clear previous interval
+                stopInterval(interval);
+
+                // start interval
+                interval = setInterval( () => {
+                    elapsed += config.interval;
+
+                    let t = Math.min(1.0, elapsed / duration) 
+                    let val = startValue + EasingFunctions[config.easingType](t) * (endValue - startValue);
+
+                    lastValue = val;
+
+                    msg.payload = val
+                    node.send(msg);
+
+                    if (t >= 1.0) {
+                        stopInterval(interval);
+                    }
+                }, config.interval)
+            }
             
         });
 
