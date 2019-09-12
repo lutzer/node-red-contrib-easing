@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-easing",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
     "url": "***REMOVED***"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "node-red": {
     "nodes": {
       "easing": "easing.js"
