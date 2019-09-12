@@ -48,6 +48,13 @@
             <option value="easeInOutQuad">easeInOutQuad</option>
             <option value="easeInCubic">easeInCubic</option>
             <option value="easeOutCubic">easeOutCubic</option>
+            <option value="easeInOutCubic">easeInOutCubic</option>
+            <option value="easeInQuart">easeInQuart</option>
+            <option value="easeOutQuart">easeOutQuart</option>
+            <option value="easeInOutQuart">easeInOutCubic</option>
+            <option value="easeInQuint">easeInQuint</option>
+            <option value="easeOutQuint">easeOutQuint</option>
+            <option value="easeInOutQuint">easeInOutQuint</option>
         </select>
     </div>
 
@@ -87,15 +94,51 @@
     <p>A node that animates a value between a start and end value using an easing function</p>
 
     <h3>Inputs</h3>
-       <dl class="message-properties">
-        <dt>payload
-            <span class="property-type">number | json</span>
-        </dt>
-        <dd>
-            <ul>
-            <li>If the payload is a number, the node will ramp from its last value to this number using the specified easing function.</li>
-            <li>If the payload contains a json object in the format: <code>{ "from" : 1, "to" : 10, "duration": 200 }</code>, it will ramp between these two values.</li>
-            <li>In any other case, the function will ramp from 0.0 to 1.0.</li>
-            </ul>
-        </dd>
+        <dl class="message-properties">
+            <dt>payload
+                <span class="property-type">number | json</span>
+            </dt>
+            <dd>
+                <ul>
+                <li>If the payload is a number, the node will ramp from its last value to this number using the specified easing function.</li>
+                <li>If the payload contains a json object in the format: <code>{ "from" : 1, "to" : 10, "duration": 200 }</code>, it will ramp between these two values.</li>
+                <li>If the payload contains a json object in the format: <code>{ "from" : 1, "to" : 10, "size": 10 }</code>, it will ramp between these two values, giving an array of 10 values</li>
+                <li>In any other case, the function will ramp from 0.0 to 1.0.</li>
+                </ul>
+            </dd>
+        </dl>
+
+    <h3>Options</h3>
+        <dl class="message-properties">
+            <dt>Easing Function
+                <span class="property-type">string</span>
+            </dt>
+            <dd>
+                Selects the easing function.
+            </dd>
+            <dt>Output
+                <span class="property-type">string</span>
+            </dt>
+            <dd>
+                Selects either to output values as an array or over time.
+            </dd>
+            <dt>Size
+                <span class="property-type">number</span>
+            </dt>
+            <dd>
+                Selects number of elements if output is set to array.
+            </dd>
+            <dt>Duration
+                <span class="property-type">number</span>
+            </dt>
+            <dd>
+                Sets duration of the easing function.
+            </dd>
+            <dt>Interval
+                <span class="property-type">number</span>
+            </dt>
+            <dd>
+                Sets interval in which values are emitted.
+            </dd>
+        </dl>
 </script>

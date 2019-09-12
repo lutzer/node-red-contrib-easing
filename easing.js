@@ -88,7 +88,7 @@ module.exports = function(RED) {
 
                 lastValue = endValue;
 
-                msg.payload = _.drop(values,1);
+                msg.payload = values;
                 node.send(msg);
 
             } else if (config.outputType === "overTime") {
@@ -98,6 +98,10 @@ module.exports = function(RED) {
 
                 // clear previous interval
                 stopInterval(interval);
+
+                //send start value
+                msg.payload = startValue
+                node.send(msg);
 
                 // start interval
                 interval = setInterval( () => {
