@@ -2,6 +2,11 @@
   "name": "node-red-contrib-easing",
   "version": "0.1.1",
   "description": "",
+  "author" : "Lutz Reiter",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/lutzer/node-red-contrib-easing.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
