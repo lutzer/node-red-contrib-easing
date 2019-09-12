@@ -19,5 +19,6 @@
   },
   "dependencies": {
     "lodash": "^4.17.15"
-  }
+  },
+  "keywords": [ "node-red", "easing", "ramp", "interpolate", "animate" ]
 }
