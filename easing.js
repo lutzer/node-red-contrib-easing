@@ -20,7 +20,12 @@ module.exports = function(RED) {
         }
 
         if (config.numberOfValues <= 0) {
-            node.error("array size must be bigger than 0");
+            node.error("array size must be bigger than 0.");
+            return;
+        }
+
+        if (!_.has(EasingFunctions,config.easingType)) {
+            node.error("easing function does not exists.");
             return;
         }
 
