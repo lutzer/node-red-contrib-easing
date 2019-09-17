@@ -29,7 +29,29 @@ EasingFunctions = {
 		if (t == 1.0) return 1.0;
         if ((t = t*2) < 1) return 1/2 * Math.pow(2, 10 * (t - 1));
         else return 1/2 * (-Math.pow(2, -10 * --t) + 2);
-	}
+    },
+    
+    bounceOut: function(t) {
+        if ((t /= 1.0) < 1 / 2.75) {
+          return 7.5625 * t * t;
+        } else if (t < 2 / 2.75) {
+          return 7.5625 * (t -= 1.5 / 2.75) * t + 0.75;
+        } else if (t < 2.5 / 2.75) {
+          return 7.5625 * (t -= 2.25 / 2.75) * t + 0.9375;
+        } else {
+          return 7.5625 * (t -= 2.625 / 2.75) * t + 0.984375;
+        }
+    },
+    bounceIn: function(t) {
+        return 1.0 - EasingFunctions.bounceOut(1.0 - t);
+    },
+    bounceInOut: function(t) {
+        if (t < 0.5) {
+            return EasingFunctions.bounceIn(t * 2) * 0.5;
+        } else {
+            return EasingFunctions.bounceOut(t * 2 - 1.0) * 0.5 + 0.5;
+        }
+    }
 }
 
 module.exports = EasingFunctions;
