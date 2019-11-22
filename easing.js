@@ -9,7 +9,7 @@ function stopInterval(interval) {
 }
 
 module.exports = function(RED) {
-    function LowerCaseNode(config) {
+    function Easing(config) {
         RED.nodes.createNode(this,config);
         var node = this;
 
@@ -105,5 +105,5 @@ module.exports = function(RED) {
             stopInterval(interval);
         })
     }
-    RED.nodes.registerType("easing",LowerCaseNode);
+    RED.nodes.registerType("easing", Easing);
 }
