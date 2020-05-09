@@ -95,18 +95,19 @@ xxx Beispiele mit
 
 <a name="example_flow"></a>
 ### Example Flow
-
+The example flow shows the three options of input data. The injecting nodes 
 xxx no payload -> "no payload"
 
-![](assets/flow.png)  
+![Example flow](assets/flow.png)  
 **Fig. xxx:** Example flow
 
 ```json
-[{"id":"80f5ed1.a1e731","type":"easing","z":"875d4c17.95deb","name":"","easingType":"linear","duration":1000,"interval":50,"x":770,"y":340,"wires":[["4efd24e4.f8e30c"]]},{"id":"455d1386.fddebc","type":"inject","z":"875d4c17.95deb","name":"no payload","topic":"","payload":"","payloadType":"str","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":570,"y":240,"wires":[["80f5ed1.a1e731"]]},{"id":"3aa76239.fa47ee","type":"inject","z":"875d4c17.95deb","name":"{\"from\":10,\"to\":20,\"duration\":1000}","topic":"","payload":"{\"from\":10,\"to\":20,\"duration\":1000}","payloadType":"json","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":490,"y":340,"wires":[["80f5ed1.a1e731"]]},{"id":"a510aa50.7efea8","type":"inject","z":"875d4c17.95deb","name":"","topic":"5.0","payload":"","payloadType":"num","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":590,"y":440,"wires":[["80f5ed1.a1e731"]]},{"id":"ff180091.9f123","type":"inject","z":"875d4c17.95deb","name":"","topic":"1.0","payload":"","payloadType":"num","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":590,"y":480,"wires":[["80f5ed1.a1e731"]]},{"id":"5e89b174.fc32f","type":"comment","z":"875d4c17.95deb","name":"no payload will ramp the value between 0.0 and 1.0","info":"","x":440,"y":200,"wires":[]},{"id":"681e5b0e.fcf714","type":"comment","z":"875d4c17.95deb","name":"specifing a json payload will ramp between the two specified values","info":"","x":390,"y":300,"wires":[]},{"id":"20d90e2a.b623a2","type":"comment","z":"875d4c17.95deb","name":"specifing a number as payload, will ramp to the value from the last value","info":"","x":380,"y":400,"wires":[]},{"id":"4efd24e4.f8e30c","type":"debug","z":"875d4c17.95deb","name":"","active":true,"tosidebar":true,"console":false,"tostatus":false,"complete":"false","x":960,"y":340,"wires":[]}]
+[{"id":"98c9f381.9ff4d8","type":"easing","z":"b790191a.b48268","name":"","easingType":"easeInOutSine","outputType":"overTime","duration":"10000","interval":50,"numberOfValues":"100","x":860,"y":640,"wires":[["1c98c61a.486e32"]]},{"id":"1f7741b6.5f97c6","type":"inject","z":"b790191a.b48268","name":"empty payload","topic":"","payload":"","payloadType":"str","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":656,"y":540,"wires":[["98c9f381.9ff4d8"]]},{"id":"4680d5d4.87aa84","type":"inject","z":"b790191a.b48268","name":"{\"from\":10,\"to\":20,\"duration\":1000}","topic":"","payload":"{\"from\":10,\"to\":20,\"duration\":1000}","payloadType":"json","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":588,"y":640,"wires":[["98c9f381.9ff4d8"]]},{"id":"c3340041.875038","type":"inject","z":"b790191a.b48268","name":"","topic":"","payload":"42","payloadType":"num","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":686,"y":740,"wires":[["98c9f381.9ff4d8"]]},{"id":"8ac57108.1cc908","type":"inject","z":"b790191a.b48268","name":"","topic":"","payload":"-3.14159","payloadType":"num","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":677,"y":780,"wires":[["98c9f381.9ff4d8"]]},{"id":"a81bf204.a4b8b8","type":"comment","z":"b790191a.b48268","name":"\"empty payload\" will ramp the value between 0.0 and 1.0","info":"","x":520,"y":500,"wires":[]},{"id":"9b527086.691238","type":"comment","z":"b790191a.b48268","name":"specifing a JSON payload will ramp between the two specified values","info":"","x":480,"y":600,"wires":[]},{"id":"f507eb28.64d96","type":"comment","z":"b790191a.b48268","name":"specifing a number as payload, will ramp to the value from the last value","info":"","x":470,"y":700,"wires":[]},{"id":"1c98c61a.486e32","type":"debug","z":"b790191a.b48268","name":"","active":true,"tosidebar":false,"console":false,"tostatus":true,"complete":"payload","targetType":"msg","x":1050,"y":640,"wires":[]}]
 ```  
 
-<a name="transition_curves"></a>
-## Transition curves of the easing functions
+<a name="transition_profiles"></a>
+## Transition profiles of the easing functions
+The following graphs show the normalized transition profiles the user can select.
 
 ![FunctionsPolynomial](assets/functionsPolynomial.png)  
 **Fig. xxx:** Polynomial easing functions
@@ -115,5 +116,5 @@ xxx no payload -> "no payload"
 **Fig. xxx:** Sinoide and exponential easing functions
 
 ![FunctionsBouncing](assets/functionsBouncing.png)  
-**Fig. xxx:** Sinoide and exponential easing functions
+**Fig. xxx:** Bouncing easing functions
 
