@@ -40,21 +40,36 @@ Several easing funtions are selectable in the node configuration. These are:
 The curves of these functions are shown below. See chapter xxx for details.
 
 
-#### Values over time vs. array data
-
-
-#### Values over time
-Duration, interval in ms
-
-#### Array
-Size
-
-
-
 ### Input
 
 
+payload number | json
+
+        If the payload is a number, the node will ramp from its last value to this number using the specified easing function.
+        If the payload contains a json object in the format: { "from" : 1, "to" : 10, "duration": 200 }, it will ramp between these two values.
+        If the payload contains a json object in the format: { "from" : 1, "to" : 10, "size": 10 }, it will ramp between these two values, giving an array of 10 values
+        In any other case, the function will ramp from 0.0 to 1.0.
+
+
+
+
+
 ### Output
+
+#### Output - Values over time vs. array data
+
+
+#### Output - Values over time
+Duration: Sets duration of the easing function. 
+Interval: Sets interval in which values are emitted. 
+(in ms)
+xxx Erläuterung: Interval: Stufigkeit, Duration/Interval: Stufenanzahl
+
+
+#### Output - Array
+Size: Selects number of elements if output is set to array. 
+
+
 
 
 ### Further information
@@ -63,8 +78,12 @@ Check Node-REDs info panel to see more information on how to use the easing node
 
 ## Examples
 
+xxx Beispiele mit 
+
 
 ### Example Flow
+
+xxx no payload -> "no payload"
 
 ![](assets/flow.png)
 
