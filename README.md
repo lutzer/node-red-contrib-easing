@@ -1,7 +1,7 @@
 # Node Red Contrib Easing
 
-A node that ramps up a value from a start to an end value using an easing function. Outputs values over time or an array.
-Typical use cases for this are smoothing value changes over time to avoid too large steps.
+A node that ramps up a value from a start to an end value using an easing function. Output values are values over time or values within an array.
+Typical use cases are smoothing command value changes to avoid large steps.  
 ![node-appearance](assets/node-appearance.png)  
 **Fig. 1:** Node appearance
 
@@ -10,7 +10,7 @@ Typical use cases for this are smoothing value changes over time to avoid too la
 
 <a name="installation_in_node-red"></a>
 ### In Node-RED
-* Via Manage Palette -> Search for *node-red-contrib-easing*
+* Via Manage Palette -> Search for "node-red-contrib-easing"
 
 <a name="installation_in_a_shell"></a>
 ### In a shell
@@ -27,10 +27,10 @@ Typical use cases for this are smoothing value changes over time to avoid too la
 **Fig. 2:** Node properties
 
 #### Easing function
-The transition from the start to the end value follows a functional behaviour. These transiton functions are divided into three categories depending on the easing function name:
-* easeIn...: These are functions where the starting section is very smooth and the ending section contains a sharp bend.
-* easeOut...: These are functions where the starting section contains a sharp bend and the ending section is very smooth.
-* easeInOut...: These are functions where starting and ending sections are quite smooth.
+The transition from the start to the end value follows a functional behaviour. These transiton profiles are divided into three categories depending on the easing function name:
+* easeIn...: These are profiles where the starting section is very smooth and the ending section contains a sharp bend.
+* easeOut...: These are profiles where the starting section contains a sharp bend and the ending section is very smooth.
+* easeInOut...: These are profiles where starting and ending sections are quite smooth.
 
 The behaviour of these three categories is shown by the means of the sine function in Figure xxx
 ![easingInOut](assets/easingInOut.png)  
@@ -47,21 +47,22 @@ Several easing funtions are selectable in the node configuration. These are:
 * exponential (easeInExpo, , easeOutExpo, easeInOutExpo)
 * bouncing (bounceIn, bounceOut, bounceInOut)
 
-The curves of these functions are shown below. See chapter "Transition curves of the easing functions" for details.
+The profiles of these functions are shown below. See chapter "Transition curves of the easing functions" for details.
 
 
 <a name="input"></a>
 ### Input
+Depending on the type of the `msg.payload` the `easing` node behaves differently ramping with the selected easing function.
 
+#### No payload (empty string)
+In the case of an empty string within the `msg` payload, the `easing` node ramps from 0.0 to 1.0.
 
-payload number
+#### Number as payload 
+If the payload is a number, the node ramps from its last value to this number.
 
-If the payload is a number, the node will ramp from its last value to this number using the specified easing function.
-If the payload contains a json object in the format: { "from" : 1, "to" : 10, "duration": 200 }, it will ramp between these two values.
-If the payload contains a json object in the format: { "from" : 1, "to" : 10, "size": 10 }, it will ramp between these two values, giving an array of 10 values
-        In any other case, the function will ramp from 0.0 to 1.0.
-
-
+#### JSON object as payload
+* If the payload contains a JSON object in the format: { "from" : 1, "to" : 10, "duration": 200 }, it will ramp between these two values within the given duration (in milliseconds).
+* If the payload contains a JSON object in the format: { "from" : 1, "to" : 10, "size": 10 }, it will ramp between these two values, giving an array of 10 values. 
 
 
 <a name="output"></a>
