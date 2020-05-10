@@ -33,7 +33,7 @@ The transition from the start to the end value follows a functional behaviour. T
 * easeInOut...: These are profiles where starting and ending sections are quite smooth.
 
 The behaviour of these three categories is shown by the means of the sinoidal functions in Figure 3.
-<img src="assets/easingInOut.png" title="Easing function categories (In, Out, InOut)" width="400" />
+<img src="assets/easingInOut.png" title="Easing function categories (In, Out, InOut)" width="400" />  
 **Fig. 3:** Easing function categories (In, Out, InOut)
 
 
@@ -109,10 +109,10 @@ The example flow shows the three options of input data via the injecting nodes (
 ## Transition profiles of the easing functions
 The following graphs show the normalized transition profiles the user can select.
 
-<img src="assets/functionsPolynomial.png" title="Polynomial profiles" width="500" />
+<img src="assets/functionsPolynomial.png" title="Polynomial profiles" width="500" />  
 **Fig. 8:** Polynomial profiles
 
-<img src="assets/functionsSinoideExponential.png" title="Sinoide and exponential profiles" width="500" /> 
+<img src="assets/functionsSinoideExponential.png" title="Sinoide and exponential profiles" width="500" />  
 **Fig. 9:** Sinoide and exponential profiles
 
 <img src="assets/functionsBouncing.png" title="Bouncing profiles" width="500" />  
