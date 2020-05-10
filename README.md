@@ -32,7 +32,7 @@ The transition from the start to the end value follows a functional behaviour. T
 * easeOut...: These are functions where the starting section contains a sharp bend and the ending section is very smooth.
 * easeInOut...: These are functions where starting and ending sections are quite smooth.
 
-The behaviour of these three categories is shown by the means of the sine function in Figure xxx
+The behaviour of these three categories is shown by the means of the sinoidal functions in Figure 3.
 ![easingInOut](assets/easingInOut.png)  
 **Fig. 3:** Easing function categories (In, Out, InOut)
 
@@ -47,8 +47,7 @@ Several easing funtions are selectable in the node configuration. These are:
 * exponential (easeInExpo, , easeOutExpo, easeInOutExpo)
 * bouncing (bounceIn, bounceOut, bounceInOut)
 
-The curves of these functions are shown below. See chapter "Transition curves of the easing functions" for details.
-
+The curves of these functions are shown below. See chapter [Transition curves of the easing functions](#transition_curves) for details.
 
 <a name="input"></a>
 ### Input
