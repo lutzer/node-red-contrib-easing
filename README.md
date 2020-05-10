@@ -76,12 +76,13 @@ The scaling of both values relates to milliseconds (ms).
 
 The number of sent `msg` objects equals to (&lt;Duration&gt; / &lt;Interval&gt;) + 1: The first `msg` object is sent immediately containing the start value (e.g. 0.0), the last `msg` object is sent after &lt;Duration&gt; ms containing the end value (e.g. 1.0).
 
-The 'step height' of every 'msg.payload` value equals to (&lt;end value&gt; -- &lt;start value&gt;) \* &lt;Interval&gt; / &lt;Duration&gt;.  
+The 'step height' of every 'msg.payload` value equals to : 
+(&lt;end value&gt; -- &lt;start value&gt;) \* &lt;Interval&gt; / &lt;Duration&gt;.  
 ![Values_over_time](assets/values_over_time.png)  
 **Fig. 4:** Values over time (&lt;duration&gt;, &lt;interval&gt; in ms)
 
 #### Output - Values in an array
-This option generates one single `msg` object. It contains an array [0 .. &lt;Size&gt;] with a selectable number of entries. This number of entries is set by the *Size* property within the node configuration, i.e. the array contains (&lt;Size&gt; + 1) entries. 
+This option generates one single `msg` object. It contains an array [0 .. &lt;Size&gt;] with a selectable number of entries. This number of entries is set by the *Size* property within the node configuration, i.e. the array contains (&lt;Size&gt; + 1) entries.  
 ![As array](assets/array.png)  
 **Fig. 5:** Configuration *As Array*
 
