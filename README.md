@@ -51,33 +51,35 @@ The profiles of these functions are shown below. See chapter [Transition profile
 
 <a name="input"></a>
 ### Input
-Depending on the type of the `msg.payload` the `easing` node behaves differently ramping with the selected easing function.
-
-#### No payload (empty string)
-In the case of an empty string within the `msg` payload, the `easing` node ramps from 0.0 to 1.0.
-
-#### Number as payload
-If the payload is a number, the node ramps from its last value to this number.
-
-#### JSON object as payload
-* If the payload contains a JSON object in the format: { "from" : 1, "to" : 10, "duration": 200 }, it will ramp between these two values within the given duration (in milliseconds).
-* If the payload contains a JSON object in the format: { "from" : 1, "to" : 10, "size": 10 }, it will ramp between these two values, giving an array of 10 values.
+Depending on the type of the `msg.payload` the `easing` node behaves differently ramping with the selected easing function:
+1. **No payload** (empty string)
+In the case of an empty string within the `msg.payload`, the `easing` node ramps from 0.0 to 1.0.
+2. **Number as payload**
+If the `msg.payload` is a number, the `easing` node ramps from its last value to this number given.
+3.  **JSON object as payload**
+  * If the `msg.payload` contains a JSON object in the format: { "from" : 1, "to" : 10, "duration": 200 }, it will ramp between these two values (&lt;from&gt;, &lt;to&gt;) within the given &lt;duration&gt; (in milliseconds).
+  * If the `msg.payload` contains a JSON object in the format: { "from" : 1, "to" : 10, "size": 10 }, it will ramp between these two values (&lt;from&gt;, &lt;to&gt;), giving an array of &lt;size&gt; values.
 
 
 <a name="output"></a>
 ### Output
 
 #### Output - Values over time vs. array data
-
+xxx
 
 #### Output - Values over time
+xxx
 Duration: Sets duration of the easing function.
 Interval: Sets interval in which values are emitted.
 (in ms)
 xxx Erläuterung: Interval: Stufigkeit, Duration/Interval: Stufenanzahl
 
+![Values_over_time](assets/values_over_time.png)  
+**Fig. 4:** Values over time (&lt;duration&gt;, &lt;interval&gt; in ms)
+
 
 #### Output - Array
+xxx
 Size: Selects number of elements if output is set to array.
 
 
@@ -86,33 +88,28 @@ Size: Selects number of elements if output is set to array.
 ### Further information
 Check Node-REDs info panel to see more information on how to use the easing node.
 
-<a name="examples"></a>
-## Examples
+<a name="example"></a>
+## Example
 
-xxx Beispiele mit
-
-
-<a name="example_flow"></a>
-### Example Flow
-The example flow shows the three options of input data. The injecting nodes
-xxx no payload -> "no payload"
+The example flow shows the three options of input data via the injecting nodes.
 
 ![Example flow](assets/flow.png)  
-**Fig. xxx:** Example flow
+**Fig. 5:** Easing example
 
 ```json
 [{"id":"98c9f381.9ff4d8","type":"easing","z":"b790191a.b48268","name":"","easingType":"easeInOutSine","outputType":"overTime","duration":"10000","interval":50,"numberOfValues":"100","x":860,"y":640,"wires":[["1c98c61a.486e32"]]},{"id":"1f7741b6.5f97c6","type":"inject","z":"b790191a.b48268","name":"empty payload","topic":"","payload":"","payloadType":"str","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":656,"y":540,"wires":[["98c9f381.9ff4d8"]]},{"id":"4680d5d4.87aa84","type":"inject","z":"b790191a.b48268","name":"{\"from\":10,\"to\":20,\"duration\":1000}","topic":"","payload":"{\"from\":10,\"to\":20,\"duration\":1000}","payloadType":"json","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":588,"y":640,"wires":[["98c9f381.9ff4d8"]]},{"id":"c3340041.875038","type":"inject","z":"b790191a.b48268","name":"","topic":"","payload":"42","payloadType":"num","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":686,"y":740,"wires":[["98c9f381.9ff4d8"]]},{"id":"8ac57108.1cc908","type":"inject","z":"b790191a.b48268","name":"","topic":"","payload":"-3.14159","payloadType":"num","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":677,"y":780,"wires":[["98c9f381.9ff4d8"]]},{"id":"a81bf204.a4b8b8","type":"comment","z":"b790191a.b48268","name":"\"empty payload\" will ramp the value between 0.0 and 1.0","info":"","x":520,"y":500,"wires":[]},{"id":"9b527086.691238","type":"comment","z":"b790191a.b48268","name":"specifing a JSON payload will ramp between the two specified values","info":"","x":480,"y":600,"wires":[]},{"id":"f507eb28.64d96","type":"comment","z":"b790191a.b48268","name":"specifing a number as payload, will ramp to the value from the last value","info":"","x":470,"y":700,"wires":[]},{"id":"1c98c61a.486e32","type":"debug","z":"b790191a.b48268","name":"","active":true,"tosidebar":false,"console":false,"tostatus":true,"complete":"payload","targetType":"msg","x":1050,"y":640,"wires":[]}]
 ```  
+**Fig. 6:** Easing example flow
 
 <a name="transition_profiles"></a>
 ## Transition profiles of the easing functions
 The following graphs show the normalized transition profiles the user can select.
 
 ![FunctionsPolynomial](assets/functionsPolynomial.png)  
-**Fig. xxx:** Polynomial easing functions
+**Fig. 7:** Polynomial profiles
 
 ![FunctionsSinoideExponential](assets/functionsSinoideExponential.png)  
-**Fig. xxx:** Sinoide and exponential easing functions
+**Fig. 8:** Sinoide and exponential profiles
 
 ![FunctionsBouncing](assets/functionsBouncing.png)  
-**Fig. xxx:** Bouncing easing functions
+**Fig. 9:** Bouncing profiles
