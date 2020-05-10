@@ -76,8 +76,8 @@ The scaling of both values relates to milliseconds (ms).
 
 The number of sent `msg` objects equals to (&lt;Duration&gt; / &lt;Interval&gt;) + 1: The first `msg` object is sent immediately containing the start value (e.g. 0.0), the last `msg` object is sent after &lt;Duration&gt; ms containing the end value (e.g. 1.0).
 
-The 'step height' of every 'msg.payload` value equals to :  
-(&lt;end value&gt; -- &lt;start value&gt;) \* &lt;Interval&gt; / &lt;Duration&gt;.  
+The 'step height' of every `msg.payload` value depends on the selected easing function. As an example, for the linear case it equals to :  
+(&lt;end value&gt; -- &lt;start value&gt;) **&middot;**  &lt;Interval&gt; / &lt;Duration&gt;.  
 ![Values_over_time](assets/values_over_time.png)  
 **Fig. 4:** Values over time (&lt;duration&gt;, &lt;interval&gt; in ms)
 
