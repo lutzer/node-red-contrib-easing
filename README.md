@@ -109,11 +109,14 @@ The example flow shows the three options of input data via the injecting nodes (
 ## Transition profiles of the easing functions
 The following graphs show the normalized transition profiles the user can select.
 
-<img src="assets/functionsPolynomial.png" title="Polynomial profiles" width="500" />  
+<img src="assets/functionsPolynomial.png" title="Polynomial profiles" width="500" />
+
 **Fig. 8:** Polynomial profiles
 
-<img src="assets/functionsSinoideExponential.png" title="Sinoide and exponential profiles" width="500" />  
+<img src="assets/functionsSinoideExponential.png" title="Sinoide and exponential profiles" width="500" />
+
 **Fig. 9:** Sinoide and exponential profiles
 
-<img src="assets/functionsBouncing.png" title="Bouncing profiles" width="500" />  
+<img src="assets/functionsBouncing.png" title="Bouncing profiles" width="500" />
+
 **Fig. 10:** Bouncing profiles
