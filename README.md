@@ -118,4 +118,5 @@ The following graphs show the normalized transition profiles the user can select
 **Fig. 9:** Sinoide and exponential profiles
 
 <img src="assets/functionsBouncing.png" title="Bouncing profiles" width="500" />
+
 **Fig. 10:** Bouncing profiles
