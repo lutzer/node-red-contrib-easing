@@ -63,24 +63,27 @@ If the `msg.payload` is a number, the `easing` node ramps from its last value to
 
 <a name="output"></a>
 ### Output
-
-#### Output - Values over time vs. array data
-xxx
+The output can be configured via the *Output* property within the node configuration to be
+* **Values over Time**
+  In this case, several `msg` objects are sent, each containing one single value within the `msg.payload`.
+* **As Array**
+  In this case, one single `msg` is sent, containing an array with all transition profile values within the `msg.payload`.
 
 #### Output - Values over time
-xxx
-Duration: Sets duration of the easing function.
-Interval: Sets interval in which values are emitted.
-(in ms)
-xxx Erläuterung: Interval: Stufigkeit, Duration/Interval: Stufenanzahl
+This option generates a `msg` sequence. 
+The duration of this sequence is set by the *Duration* property within the node configuration. The time interval between two `msg` sent is set by the *Interval* property within the node configuration.
+The scaling of both values relates to milliseconds (ms).
 
+The number of sent `msg` objects equals to (&lt;Duration&gt; / &lt;Interval&gt;) + 1: The first `msg` object is sent immediately containing the start value (e.g. 0.0), the last `msg` object is sent after &lt;Duration&gt; ms containing the end value (e.g. 1.0).
+
+The 'step height' of every 'msg.payload` value equals to (&lt;end value&gt; -- &lt;start value&gt;) \* &lt;Interval&gt; / &lt;Duration&gt;.  
 ![Values_over_time](assets/values_over_time.png)  
 **Fig. 4:** Values over time (&lt;duration&gt;, &lt;interval&gt; in ms)
 
-
-#### Output - Array
-xxx
-Size: Selects number of elements if output is set to array.
+#### Output - Values in an array
+This option generates one single `msg` object. It contains an array [0 .. &lt;Size&gt;] with a selectable number of entries. This number of entries is set by the *Size* property within the node configuration, i.e. the array contains (&lt;Size&gt; + 1) entries. 
+![As array](assets/array.png)  
+**Fig. 5:** Configuration *As Array*
 
 
 
@@ -91,25 +94,25 @@ Check Node-REDs info panel to see more information on how to use the easing node
 <a name="example"></a>
 ## Example
 
-The example flow shows the three options of input data via the injecting nodes.
+The example flow shows the three options of input data via the injecting nodes (option *values over time*).
 
 ![Example flow](assets/flow.png)  
-**Fig. 5:** Easing example
+**Fig. 6:** Easing example
 
 ```json
 [{"id":"98c9f381.9ff4d8","type":"easing","z":"b790191a.b48268","name":"","easingType":"easeInOutSine","outputType":"overTime","duration":"10000","interval":50,"numberOfValues":"100","x":860,"y":640,"wires":[["1c98c61a.486e32"]]},{"id":"1f7741b6.5f97c6","type":"inject","z":"b790191a.b48268","name":"empty payload","topic":"","payload":"","payloadType":"str","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":656,"y":540,"wires":[["98c9f381.9ff4d8"]]},{"id":"4680d5d4.87aa84","type":"inject","z":"b790191a.b48268","name":"{\"from\":10,\"to\":20,\"duration\":1000}","topic":"","payload":"{\"from\":10,\"to\":20,\"duration\":1000}","payloadType":"json","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":588,"y":640,"wires":[["98c9f381.9ff4d8"]]},{"id":"c3340041.875038","type":"inject","z":"b790191a.b48268","name":"","topic":"","payload":"42","payloadType":"num","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":686,"y":740,"wires":[["98c9f381.9ff4d8"]]},{"id":"8ac57108.1cc908","type":"inject","z":"b790191a.b48268","name":"","topic":"","payload":"-3.14159","payloadType":"num","repeat":"","crontab":"","once":false,"onceDelay":0.1,"x":677,"y":780,"wires":[["98c9f381.9ff4d8"]]},{"id":"a81bf204.a4b8b8","type":"comment","z":"b790191a.b48268","name":"\"empty payload\" will ramp the value between 0.0 and 1.0","info":"","x":520,"y":500,"wires":[]},{"id":"9b527086.691238","type":"comment","z":"b790191a.b48268","name":"specifing a JSON payload will ramp between the two specified values","info":"","x":480,"y":600,"wires":[]},{"id":"f507eb28.64d96","type":"comment","z":"b790191a.b48268","name":"specifing a number as payload, will ramp to the value from the last value","info":"","x":470,"y":700,"wires":[]},{"id":"1c98c61a.486e32","type":"debug","z":"b790191a.b48268","name":"","active":true,"tosidebar":false,"console":false,"tostatus":true,"complete":"payload","targetType":"msg","x":1050,"y":640,"wires":[]}]
 ```  
-**Fig. 6:** Easing example flow
+**Fig. 7:** Easing example flow
 
 <a name="transition_profiles"></a>
 ## Transition profiles of the easing functions
 The following graphs show the normalized transition profiles the user can select.
 
 ![FunctionsPolynomial](assets/functionsPolynomial.png)  
-**Fig. 7:** Polynomial profiles
+**Fig. 8:** Polynomial profiles
 
 ![FunctionsSinoideExponential](assets/functionsSinoideExponential.png)  
-**Fig. 8:** Sinoide and exponential profiles
+**Fig. 9:** Sinoide and exponential profiles
 
 ![FunctionsBouncing](assets/functionsBouncing.png)  
-**Fig. 9:** Bouncing profiles
+**Fig. 10:** Bouncing profiles
