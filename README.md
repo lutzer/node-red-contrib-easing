@@ -97,7 +97,8 @@ Check Node-REDs info panel to see more information on how to use the easing node
 
 The example flow shows the three options of input data via the injecting nodes (option *values over time*).
 
-![Example flow](assets/flow.png "Example flow")  
+<img src="assets/flow.png" title="Example flow" width="750" />
+
 **Fig. 6:** Easing example
 
 ```json
