@@ -2,7 +2,7 @@
 
 A node that ramps up a value from a start to an end value using an easing function. Output values are values over time or values within an array.
 Typical use cases are smoothing command value changes to avoid large steps.  
-![node-appearance](assets/node-appearance.png)  
+![node-appearance](assets/node-appearance.png "Node appearance")  
 **Fig. 1:** Node appearance
 
 <a name="installation"></a>
@@ -23,7 +23,7 @@ Typical use cases are smoothing command value changes to avoid large steps.
 <a name="node_conifguration"></a>
 ### Node Configuration
 
-![node-settings](assets/node-settings.png)  
+![node-settings](assets/node-settings.png "Node properties")  
 **Fig. 2:** Node properties
 
 #### Easing function
@@ -33,7 +33,7 @@ The transition from the start to the end value follows a functional behaviour. T
 * easeInOut...: These are profiles where starting and ending sections are quite smooth.
 
 The behaviour of these three categories is shown by the means of the sinoidal functions in Figure 3.
-![easingInOut](assets/easingInOut.png)  
+<img src="assets/easingInOut.png" title="Easing function categories (In, Out, InOut)" width="400" />  
 **Fig. 3:** Easing function categories (In, Out, InOut)
 
 
@@ -78,12 +78,12 @@ The number of sent `msg` objects equals to (&lt;Duration&gt; / &lt;Interval&gt;)
 
 The 'step height' of every `msg.payload` value depends on the selected easing function. As an example, for the linear case it equals to :  
 (&lt;end value&gt; -- &lt;start value&gt;) **&middot;**  &lt;Interval&gt; / &lt;Duration&gt;.  
-![Values_over_time](assets/values_over_time.png)  
+![Values_over_time](assets/values_over_time.png "Values over time (scaling: Milliseconds)")  
 **Fig. 4:** Values over time (&lt;duration&gt;, &lt;interval&gt; in ms)
 
 #### Output - Values in an array
 This option generates one single `msg` object. It contains an array [0 .. &lt;Size&gt;] with a selectable number of entries. This number of entries is set by the *Size* property within the node configuration, i.e. the array contains (&lt;Size&gt; + 1) entries.  
-![As array](assets/array.png)  
+![As array](assets/array.png "Node configuration "As Array"")  
 **Fig. 5:** Configuration *As Array*
 
 
@@ -97,7 +97,8 @@ Check Node-REDs info panel to see more information on how to use the easing node
 
 The example flow shows the three options of input data via the injecting nodes (option *values over time*).
 
-![Example flow](assets/flow.png)  
+<img src="assets/flow.png" title="Example flow" width="750" />
+
 **Fig. 6:** Easing example
 
 ```json
@@ -109,11 +110,14 @@ The example flow shows the three options of input data via the injecting nodes (
 ## Transition profiles of the easing functions
 The following graphs show the normalized transition profiles the user can select.
 
-![FunctionsPolynomial](assets/functionsPolynomial.png)  
+<img src="assets/functionsPolynomial.png" title="Polynomial profiles" width="500" />
+
 **Fig. 8:** Polynomial profiles
 
-![FunctionsSinoideExponential](assets/functionsSinoideExponential.png)  
+<img src="assets/functionsSinoideExponential.png" title="Sinoide and exponential profiles" width="500" />
+
 **Fig. 9:** Sinoide and exponential profiles
 
-![FunctionsBouncing](assets/functionsBouncing.png)  
+<img src="assets/functionsBouncing.png" title="Bouncing profiles" width="500" />
+
 **Fig. 10:** Bouncing profiles
