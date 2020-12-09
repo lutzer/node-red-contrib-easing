@@ -41,9 +41,13 @@ module.exports = function(RED) {
         node.on('input', function(msg) {
 
             var startValue, endValue;
-
+            
+            // check if reset is send
+            if (msg.topic == 'reset') {
+                stopInterval(interval)
+                return
             // if payload is a number, use that as endValue 
-            if (_.isNumber(msg.payload)) {
+            } else if (_.isNumber(msg.payload)) {
                 startValue = lastValue;
                 endValue = msg.payload;
             // else check if payload has to and from values
