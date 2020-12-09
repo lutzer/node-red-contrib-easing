@@ -1,1 +1,3 @@
 node_modules/*
+assets/functions/*
+!assets/functions/.keep
