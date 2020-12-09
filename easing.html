@@ -123,7 +123,7 @@
             <dd>
                 <ul>
                 <li>If the payload is a number, the node will ramp from its last value to this number using the specified easing function.</li>
-                <li>If the payload contains a json object in the format: <code>{ "from" : 1, "to" : 10, "duration": 200 }</code>, it will ramp between these two values.</li>
+                <li>If the payload contains a json object in the format: <code>{ "from" : 1, "to" : 10, "duration": 200, "interval" : 10 }</code>, it will ramp between these two values within 200ms, sending a value every 10ms</li>
                 <li>If the payload contains a json object in the format: <code>{ "from" : 1, "to" : 10, "size": 10 }</code>, it will ramp between these two values, giving an array of 10 values</li>
                 <li>In any other case, the function will ramp from 0.0 to 1.0.</li>
                 </ul>

@@ -57,7 +57,7 @@ In the case of an empty string within the `msg.payload`, the `easing` node ramps
 2. **Number as payload**
 If the `msg.payload` is a number, the `easing` node ramps from its last value to this number given.
 3.  **JSON object as payload**
-  * If the `msg.payload` contains a JSON object in the format: { "from" : 1, "to" : 10, "duration": 200 }, it will ramp between these two values (&lt;from&gt;, &lt;to&gt;) within the given &lt;duration&gt; (in milliseconds).
+  * If the `msg.payload` contains a JSON object in the format: { "from" : 1, "to" : 10, "duration": 200, "interval" :10 }, it will ramp between these two values (&lt;from&gt;, &lt;to&gt;) within the given &lt;duration&gt; (in milliseconds), outputing a value every &lt;interval&gt; ms.
   * If the `msg.payload` contains a JSON object in the format: { "from" : 1, "to" : 10, "size": 10 }, it will ramp between these two values (&lt;from&gt;, &lt;to&gt;), giving an array of &lt;size&gt; values.
 4. Sending a msg with the topic *reset* will cancel any currently running easing function.
 

@@ -52,7 +52,7 @@ module.exports = function(RED) {
                 endValue = msg.payload;
             // else check if payload has to and from values
             } else if (_.isObject(msg.payload)) {
-                startValue = _.has(msg.payload,'from') ? msg.payload.from : lastValue;
+                startValue = _.has(msg.payload,'from') ? msg.payload.from : 0.0;
                 endValue = _.has(msg.payload,'to') ? msg.payload.to : 1.0;
             } else {
                 startValue = 0.0;
@@ -76,6 +76,7 @@ module.exports = function(RED) {
             } else if (config.outputType === "overTime") {
 
                 let duration = _.has(msg.payload, 'duration') ? msg.payload.duration : config.duration;
+                let intervallTime = _.has(msg.payload, 'interval') ? msg.payload.interval : config.interval
                 let elapsed = 0;
 
                 // clear previous interval
@@ -87,7 +88,7 @@ module.exports = function(RED) {
 
                 // start interval
                 interval = setInterval( () => {
-                    elapsed += config.interval;
+                    elapsed += intervallTime;
 
                     let t = Math.min(1.0, elapsed / duration) 
                     let val = startValue + EasingFunctions[config.easingType](t) * (endValue - startValue);
@@ -100,7 +101,7 @@ module.exports = function(RED) {
                     if (t >= 1.0) {
                         stopInterval(interval);
                     }
-                }, config.interval)
+                }, intervallTime)
             }
             
         });
